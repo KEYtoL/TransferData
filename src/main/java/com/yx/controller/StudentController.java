@@ -32,6 +32,12 @@ public class StudentController {
     public String  transfer(@PathVariable("tableName") String tableName){
         StudentServiceProxy studentServiceProxy = new StudentServiceProxy(studentService);
         StudentService o = (StudentService) Proxy.newProxyInstance(StudentService.class.getClassLoader(), new Class[]{StudentService.class}, studentServiceProxy);
-        return  o.selectAll(tableName);
+        String s ="";
+        try {
+           s = o.selectAll(tableName);
+        } catch (Exception e) {
+            s="sssssss";
+        }
+        return  s;
     }
 }

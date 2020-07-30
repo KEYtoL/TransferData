@@ -10,12 +10,31 @@ spring:
       url: jdbc:sqlserver://127.0.0.1\SQLSERVER;databaseName=school
       username: sa
       password: 123qwe,.
+      mapperPackage: com.yx.mapper.sqlservermapper    #mapper包路径
+      mapperxmlDir: classpath:mapper1/*.xml      #mapper.xml路径
+      entityPackage: com.yx.entity  #实体包路径
+     # mybatiscfg: classpath:mybatis/mybatis.cfg.xml      #mapper对应mybatis通用配置文件路径
+      minPoolSize: 3
+      maxPoolSize: 25
+      maxLifetime: 20000
+      borrowConnectionTimeout: 30
+      loginTimeout: 30
+      maintenanceInterval: 60
+      maxIdleTime: 60
     #别名
     mysql:
       driver-class-name: com.mysql.jdbc.Driver
       url: jdbc:mysql://localhost:3306/school
       username: root
       password: 123456
-
-
+      minPoolSize: 3
+      maxPoolSize: 25
+      maxLifetime: 20000
+      borrowConnectionTimeout: 30
+      loginTimeout: 30
+      maintenanceInterval: 60
+      maxIdleTime: 60
+      mapperPackage: com.yx.mapper.mysqlmapper    #mapper包路径
+      mapperxmlDir: classpath:mapper2/*.xml      #mapper.xml路径
+      entityPackage: com.yx.entity  #实体包路径
 

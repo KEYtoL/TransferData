@@ -47,9 +47,8 @@ public class StudentServiceIpml implements StudentService {
     }
 
     @Override
-    @Transactional(transactionManager="sqlserverTransactionManager")
-    public String selectAll(String tableName) {
-        try {
+    @Transactional
+    public String selectAll(String tableName) throws RuntimeException{
             List<Student> lists = studentMapper2.selectAll();
             insertNewData(lists);
             studentMapper2.deleteAll(tableName);
@@ -57,10 +56,6 @@ public class StudentServiceIpml implements StudentService {
                 throw  new RuntimeException("123");
             }
             return "成功";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "失败";
-        }
     }
 
     @Override
