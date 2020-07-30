@@ -40,4 +40,18 @@ public class StudentController {
         }
         return  s;
     }
+
+    @RequestMapping("/transfer2/{tableName}")
+    public String  transfer2(@PathVariable("tableName") String tableName){
+        StudentServiceProxy studentServiceProxy = new StudentServiceProxy(studentService);
+        StudentService o = (StudentService) Proxy.newProxyInstance(StudentService.class.getClassLoader(), new Class[]{StudentService.class}, studentServiceProxy);
+
+        try {
+           o.selectAll2(tableName);
+           return "成功";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return  "失败";
+        }
+    }
 }

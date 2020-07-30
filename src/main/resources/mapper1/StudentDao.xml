@@ -16,5 +16,17 @@
         </foreach>
     </insert>
 
+    <insert id="saveListMap">
+        insert into ${tableName} values
+        <foreach collection="list" item="rm" separator=",">
+            <trim prefix="(" suffix=")">
+        <foreach collection="rm" index="id" item="key" separator=",">
+            #{key}
+        </foreach>
+            </trim>
+        </foreach>
+
+    </insert>
+
 
 </mapper>

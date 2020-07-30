@@ -17,4 +17,6 @@ public interface StudentService {
     String selectAll(String tableName);
 
     void insertNewData(List<Student> lists);
+
+    void selectAll2(String tableName);
 }

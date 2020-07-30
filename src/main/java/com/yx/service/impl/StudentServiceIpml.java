@@ -1,6 +1,5 @@
 package com.yx.service.impl;
 
-import ch.qos.logback.classic.db.names.TableName;
 import com.yx.entity.Student;
 import com.yx.mapper.mysqlmapper.StudentMapper2;
 import com.yx.mapper.sqlservermapper.StudentMapper1;
@@ -11,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author LiuG
@@ -61,5 +61,13 @@ public class StudentServiceIpml implements StudentService {
     @Override
     public void insertNewData(List<Student> lists) {
         studentMapper1.saveList(lists);
+    }
+
+    @Override
+    @Transactional
+    public void selectAll2(String tableName) {
+        List<Map<String, Object>> maps = studentMapper2.selectMap(tableName);
+        studentMapper1.saveListMap(tableName,maps);
+        studentMapper2.deleteAll(tableName);
     }
 }
